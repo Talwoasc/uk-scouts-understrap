@@ -1,15 +1,28 @@
-.sass-cache
-
-bower_components
-
-node_modules
-
+# Distributions
 understrap.zip
-
 dist
-
 dist-product
 
-npm-debug.log
+# SASS
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
 
-/vendor/
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+bower_components
+vendor
+
+# Archives
+*.tgz
+*.zip
+
+# VSCode
+.vscode
+.vscode-test

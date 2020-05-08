@@ -5,22 +5,50 @@
 // Thats the ugly Bootstrap blue used for all the links, primary buttons etc.
 // Just add your color code here, compile the theme.scss file to change this color everywhere
 
+/**
+ * Scout Font
+ */
 @import url(https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i,900,900i);
-
-$enable-rounded:                         false;
 $font-family-sans-serif:                 "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$headings-font-weight:                   900;
+$lead-font-weight:                       400;
+
+/**
+ * Scout Colors, these are taken from https://scouts.org.uk which are different to those
+ * specified in the brand guidelines document https://docs.scoutsbrand.org.uk/guidelines.pdf
+ */
 $blue:                                 #0061ce;
+$green:                                #008a1c;
+$navy:                                 #002F6C;
+$pink:                                 #ffb4e5;
 $purple:                               #490499;
 $red:                                  #ca1a10;
-$pink:                                 #ffb4e5;
-$yellow:                               #ffe627;
-$green:                                #008a1c;
 $teal:                                 #00a794;
+$yellow:                               #ffe627;
 $gray-100:                             #f1f1f1;
 $gray-500:                             #999;
 $gray-800:                             #404040;
 $gray-600:                             #6e6e6e;
 $gray-900:                             #333;
+$white:                                #fff !default;
+$black:                                #000 !default;
+$colors: (
+    "navy":   $navy
+);
+$theme-colors: map-merge(
+  (
+    "blue":       $blue,
+    "purple":     $purple,
+    "pink":       $pink,
+    "red":        $red,
+    "yellow":     $yellow,
+    "green":      $green,
+    "teal":       $teal,
+    "white":      $white,
+    "black":      $black
+  ),
+  $colors
+); // Add more colors into the theme
 $primary:                                $blue !default;
 $secondary:                              $teal;
 $yiq-text-dark:                          $gray-800;
@@ -29,5 +57,18 @@ $navbar-light-color:                     $gray-800;
 $link-color:                             $primary !default;
 $navbar-light-hover-color:               $link-color;
 $navbar-light-active-color:              $navbar-light-color;
-$headings-font-weight:                   900;
-$lead-font-weight:                       400;
+
+/**
+ * Misc
+ */
+$enable-rounded:                         false;
+
+$spacer: 1rem !default;
+$spacers: (
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: ($spacer * .75),
+    4: $spacer,
+    5: ($spacer * 1.25)
+);

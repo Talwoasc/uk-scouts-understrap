@@ -1,13 +1,61 @@
-@mixin alert-variant($background, $border, $color) {
-  color: color-yiq($background);
-  @include gradient-bg($background);
-  border-color: color-yiq($background);
+/**
+ * Helpers
+ */
 
-  hr {
-    border-top-color: darken($border, 5%);
-  }
-
-  .alert-link {
-    color: darken(color-yiq($background), 10%);
-  }
+// Mixin for generating fontawesome styles
+@mixin fontawesome($name) {
+    @include fa-icon;
+    @extend .fa-#{$name};
+    @extend .fa-#{$name}:before;
 }
+
+
+/**
+ * Theme Styles
+ */
+
+
+/**
+ * Reset the color of links
+ * - Post headings
+ * - Footer
+ * - Widgets
+ */
+.entry-title a, #page-footer a, .widget a {
+    @extend .text-reset;
+}
+
+// Remove the background defined in understrap
+#wrapper-footer-full{
+    background-color: initial !important;
+}
+
+// Add spacing under the widgets (except the last one)
+.widget:not(:last-child) {
+    @extend .mb-4;
+}
+
+// Format lists in sidebar and footer widgets as a column nav
+.widget, .footer-widget {
+    & ul {
+        @extend .nav;
+        @extend .flex-column;
+    }
+}
+.widget, .footer-widget {
+    & ul > li {
+        @extend .mb-1;
+    }
+}
+
+// Add a chevron on the end of all links in lists in the sidebar widgets
+.widget ul > li > a::after {
+    @include fontawesome('chevron-right');
+    float: right;
+}
+
+// Make the search button text bolder
+#searchsubmit {
+    @extend .font-weight-bold;
+}
+

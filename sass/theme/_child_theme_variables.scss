@@ -10,8 +10,6 @@
  */
 @import url(https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i,900,900i);
 $font-family-sans-serif:                 "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$headings-font-weight:                   900;
-$lead-font-weight:                       400;
 
 /**
  * Scout Colors, these are taken from https://scouts.org.uk which are different to those
@@ -62,6 +60,10 @@ $navbar-light-active-color:              $navbar-light-color;
  * Misc
  */
 $enable-rounded:                         false;
+
+$headings-font-weight:                   900;
+$lead-font-weight:                       400;
+$btn-font-weight:                        700;                     
 
 $spacer: 1rem !default;
 $spacers: (

@@ -66,23 +66,24 @@
     float: right;
 }
 
-// Make the search button text bolder
-#searchsubmit {
-    @extend .font-weight-bold;
-}
-
 // Make the header image fill the available width
-img.cover-image {
-    width: 100%;
-    height: 100%;
+.cover-image {
+    @extend .w-100;
+    @extend .h-100;
     -o-object-fit: cover;
     font-family: "object-fit:cover";
     object-fit: cover;
 }
+.container-cover-image {
+    @extend .position-absolute;
+    @extend .w-100;
+    @extend .h-100;
+    z-index: -1;
+}
 
-div#custom-header-content {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+// Stop the header getting too wide
+#custom-header-content {
+    max-width: 1250px;
 }
 
 @each $alpha in 500 {

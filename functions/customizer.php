@@ -8,11 +8,13 @@
  // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-/**
- * Set the default value for the Theme Credits
- */
+
 if ( ! function_exists( 'uk_scouts_theme_credits_default' ) ) {
+    /**
+     * Set the default value for the Theme Credits
+     */
     function uk_scouts_theme_credits_default() {
+
         $the_theme = wp_get_theme();
 
         return sprintf(
@@ -33,36 +35,25 @@ if ( ! function_exists( 'uk_scouts_theme_credits_default' ) ) {
     }
 }
 
-
-/**
- * Add support for the Theme Customizer.
- * 
- * Extra options:
- * - Copyright Entity
- * - Charity Number
- * - Customizable Theme Credits
- *
- * @param WP_Customize_Manager $wp_customize Theme Customizer object.
- */
-if ( ! function_exists( 'uk_scouts_theme_customize_register' ) ) {
+if ( ! function_exists( 'uk_scouts_theme_customize_register_siteinfo' ) ) {
 	/**
-	 * Register basic customizer support.
-	 *
-	 * @param object $wp_customize Customizer reference.
-	 */
-	function uk_scouts_theme_customize_register( $wp_customize ) {
-		$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-		$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-        $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
-        
-
-        // Site Info settings.
+     * Add siteinfo support for the Theme Customizer.
+     * 
+     * Extra options:
+     * - Copyright Entity
+     * - Charity Number
+     * - Customizable Theme Credits
+     *
+     * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+     */
+	function uk_scouts_theme_customize_register_siteinfo( $wp_customize ) {
+    
 		$wp_customize->add_section(
 			'uk_scouts_siteinfo_options',
 			array(
 				'title'       => __('Site Info Settings', 'uk-scouts-understrap'),
 				'capability'  => 'edit_theme_options',
-				'priority'    => 30,
+				'priority'    => 190,
 			)
         );
 
@@ -119,4 +110,130 @@ if ( ! function_exists( 'uk_scouts_theme_customize_register' ) ) {
         );
 	}
 }
-add_action( 'customize_register', 'uk_scouts_theme_customize_register' );
+add_action( 'customize_register', 'uk_scouts_theme_customize_register_siteinfo' );
+
+
+if ( ! function_exists( 'uk_scouts_theme_homepage_header_text_default' ) ) {
+    /**
+     * Set the default value for the Theme Homepage Header Text
+     */
+    function uk_scouts_theme_homepage_header_text_default() {
+
+        return "As Scouts, we believe in preparing young people with skills for life. We encourage our young people to do more, learn more and be more.";
+    }
+}
+
+if ( ! function_exists( 'uk_scouts_theme_homepage_header_button_text_default' ) ) {
+    /**
+     * Set the default value for the Theme Homepage Header Button Text
+     */
+    function uk_scouts_theme_homepage_header_button_text_default() {
+
+        return "Get Involved";
+    }
+}
+
+if ( ! function_exists( 'uk_scouts_theme_customize_register_homepage' ) ) {
+	/**
+     * Add homepage support for the Theme Customizer.
+     * 
+     * Extra options:
+     * - Header title
+     * - Header text
+     * - Header button with link
+     *
+     * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+     */
+	function uk_scouts_theme_customize_register_homepage( $wp_customize ) {
+    
+        $wp_customize->add_setting(
+			'uk_scouts_homepage_header_title',
+			array(
+				'default'           => get_bloginfo( 'name' ),
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+        
+        $wp_customize->add_control(
+            'uk_scouts_homepage_header_title',
+            array(
+                'label' => __( 'Header Title', 'uk-scouts-understrap' ),
+                'type' => 'text',
+                'section' => 'static_front_page',
+            )
+        );
+
+        $wp_customize->add_setting(
+			'uk_scouts_homepage_header_text',
+			array(
+                'default'           => uk_scouts_theme_homepage_header_text_default(),
+				'sanitize_callback' => 'wp_filter_post_kses',
+			)
+		);
+        
+        $wp_customize->add_control(
+            'uk_scouts_homepage_header_text',
+            array(
+                'label' => __( 'Header Text', 'uk-scouts-understrap' ),
+                'description' => __( 'Text to display below the header title. Can inlcude HTML.', 'uk-scouts-understrap'),
+                'type' => 'textarea',
+                'section' => 'static_front_page',
+            )
+        );
+
+        $wp_customize->add_setting(
+			'uk_scouts_homepage_header_button_text',
+			array(
+				'default'           => uk_scouts_theme_homepage_header_button_text_default(),
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+        
+        $wp_customize->add_control(
+            'uk_scouts_homepage_header_button_text',
+            array(
+                'label' => __( 'Header Button Text', 'uk-scouts-understrap' ),
+                'description' => __( 'Ne text causes the button to be hidden.', 'uk-scouts-understrap'),
+                'type' => 'text',
+                'section' => 'static_front_page',
+            )
+        );
+
+        $wp_customize->add_setting(
+			'uk_scouts_homepage_header_button_link',
+			array(
+				'sanitize_callback' => 'absint',
+			)
+		);
+        
+        $wp_customize->add_control(
+            'uk_scouts_homepage_header_button_link',
+            array(
+                'label' => __( 'Header Button Link', 'uk-scouts-understrap' ),
+                'type' => 'dropdown-pages',
+                'allow_addition' => true,
+                'section' => 'static_front_page',
+            )
+        );
+
+        foreach ( array('beavers', 'cubs', 'scouts', 'explorers', 'network', 'volunteer') as $section ) {
+            $wp_customize->add_setting(
+                'uk_scouts_homepage_header_' . $section . '_link',
+                array(
+                    'sanitize_callback' => 'absint',
+                )
+            );
+            
+            $wp_customize->add_control(
+                'uk_scouts_homepage_header_' . $section . '_link',
+                array(
+                    'label' => __( ucfirst( $section ) . ' Link', 'uk-scouts-understrap' ),
+                    'type' => 'dropdown-pages',
+                    'allow_addition' => true,
+                    'section' => 'static_front_page',
+                )
+            );
+        }
+	}
+}
+add_action( 'customize_register', 'uk_scouts_theme_customize_register_homepage' );

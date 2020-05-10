@@ -13,11 +13,11 @@ defined( 'ABSPATH' ) || exit;
 $container = get_theme_mod( 'understrap_container_type' );
 $charity_number = get_theme_mod( 'uk_scouts_charity_number' );
 ?>
-<footer class="wrapper bg-purple text-white" id="page-footer">
+<footer class="bg-purple text-white" id="page-footer">
 
     <div class="<?php echo esc_attr( $container ); ?>">
-        <div class="row">
-            <img width="110" height="80" src="<?php echo get_theme_file_uri( '/img/logos/scouts-stack-white.svg' ); ?>" alt="Scouts logo" class="mx-auto">
+        <div class="row pt-12 pb-8">
+            <img width="110" height="80" src="<?php echo esc_url( get_theme_file_uri( '/img/logos/scouts-stack-white.svg' ) ); ?>" alt="Scouts logo" class="mx-auto">
         </div>
     </div>
 
@@ -27,7 +27,7 @@ $charity_number = get_theme_mod( 'uk_scouts_charity_number' );
         <div class="row">
             <div class="col-md-6">
                 <p class="small">
-                    &copy; Copyright <?php echo get_theme_mod( 'uk_scouts_copyright_entity', get_bloginfo( 'name' ) ); ?> 2020. All Rights Reserved.
+                    &copy; Copyright <?php echo esc_html( get_theme_mod( 'uk_scouts_copyright_entity', get_bloginfo( 'name', 'display' ) ) ); ?> 2020. All Rights Reserved.
                     <?php if ( $charity_number ): ?>
                     <br>
                     Charity number: <?php echo $charity_number; ?>.

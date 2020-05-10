@@ -71,3 +71,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		</nav><!-- .site-navigation -->
 
 	</div><!-- #wrapper-navbar end -->
+
+    <?php if ( is_front_page() && is_home() ) : ?>
+	<?php get_template_part( 'global-templates/custom-header' ); ?>
+    <?php endif; ?>

@@ -2684,7 +2684,7 @@ textarea.form-control,
 .btn,
 .wpcf7 input[type=submit] {
   display: inline-block;
-  font-weight: 400;
+  font-weight: 700;
   color: #404040;
   text-align: center;
   vertical-align: middle;
@@ -8308,7 +8308,7 @@ button.bg-navy:focus {
 .position-relative {
   position: relative !important; }
 
-.position-absolute {
+.position-absolute, .container-cover-image {
   position: absolute !important; }
 
 .position-fixed {
@@ -8382,7 +8382,7 @@ button.bg-navy:focus {
 .w-75 {
   width: 75% !important; }
 
-.w-100 {
+.w-100, .cover-image, .container-cover-image {
   width: 100% !important; }
 
 .w-auto {
@@ -8397,7 +8397,7 @@ button.bg-navy:focus {
 .h-75 {
   height: 75% !important; }
 
-.h-100 {
+.h-100, .cover-image, .container-cover-image {
   height: 100% !important; }
 
 .h-auto {
@@ -10768,7 +10768,7 @@ button.bg-navy:focus {
 .font-weight-normal {
   font-weight: 400 !important; }
 
-.font-weight-bold, #searchsubmit {
+.font-weight-bold {
   font-weight: 700 !important; }
 
 .font-weight-bolder {
@@ -13441,16 +13441,16 @@ figure.woocommerce-product-gallery__wrapper {
   -moz-osx-font-smoothing: grayscale;
   float: right; }
 
-img.cover-image {
-  width: 100%;
-  height: 100%;
+.cover-image {
   -o-object-fit: cover;
   font-family: "object-fit:cover";
   object-fit: cover; }
 
-div#custom-header-content {
-  padding-top: 4rem;
-  padding-bottom: 4rem; }
+.container-cover-image {
+  z-index: -1; }
+
+#custom-header-content {
+  max-width: 1250px; }
 
 .bg-alpha-500 {
   background-color: rgba(0, 0, 0, 0.5) !important; }

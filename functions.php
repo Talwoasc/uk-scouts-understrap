@@ -11,6 +11,7 @@ defined( 'ABSPATH' ) || exit;
 $uk_scouts_understrap_includes = array(
     '/child.php',                           // Default UnderStrap child class code.
     '/customizer.php',                      // Customizer additions.
+    '/custom-header.php',                   // Header customisation.
     '/widgets.php',                         // Widget declarations and extensions.
 );
 

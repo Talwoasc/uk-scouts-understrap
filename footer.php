@@ -10,11 +10,12 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
+$container = get_theme_mod( 'understrap_container_type' );
 $charity_number = get_theme_mod( 'uk_scouts_charity_number' );
 ?>
 <footer class="wrapper bg-purple text-white" id="page-footer">
 
-    <div class="container">
+    <div class="<?php echo esc_attr( $container ); ?>">
         <div class="row">
             <img width="110" height="80" src="<?php echo get_theme_file_uri( '/img/logos/scouts-stack-white.svg' ); ?>" alt="Scouts logo" class="mx-auto">
         </div>
@@ -22,7 +23,7 @@ $charity_number = get_theme_mod( 'uk_scouts_charity_number' );
 
     <?php get_template_part( 'sidebar-templates/sidebar', 'footerfull' ); ?>
 
-    <div class="container">
+    <div class="<?php echo esc_attr( $container ); ?>">
         <div class="row">
             <div class="col-md-6">
                 <p class="small">

@@ -85,8 +85,16 @@
 #custom-header-content {
     max-width: 1250px;
 }
-
 @each $alpha in 500 {
     @include bg-alpha-variant(".bg-alpha-#{$alpha}", $black, $alpha / 1000);
   }
 
+// Make the footer stick to the bottom for pages with short content
+#page {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+#index-wrapper, #page-wrapper, #single-wrapper {
+    flex: 1;
+}

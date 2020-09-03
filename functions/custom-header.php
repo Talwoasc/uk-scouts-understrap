@@ -37,6 +37,14 @@ if ( ! function_exists( 'understrap_custom_header_setup' ) ) {
         );
 
     }
+    register_default_headers(
+        array(
+            'default-image' => array(
+                'url'                   => get_theme_file_uri('/img/headers/default.jpg'),
+                'thumbnail_url'         => get_theme_file_uri('/img/headers/default.jpg'),
+            ),
+        )
+    );
 }
 add_action( 'after_setup_theme', 'understrap_custom_header_setup' );
 

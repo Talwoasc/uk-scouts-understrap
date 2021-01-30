@@ -13460,6 +13460,9 @@ button.bg-alpha-500:hover,
 button.bg-alpha-500:focus {
   background-color: black !important; }
 
+#page-header-image {
+  max-height: 250px; }
+
 #page {
   display: -webkit-box;
   display: -ms-flexbox;

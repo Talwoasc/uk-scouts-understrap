@@ -1,6 +1,6 @@
 <?php
 /**
- * Cusotm header template.
+ * Custom header template.
  *
  * @package uk_scouts_understrap
  */

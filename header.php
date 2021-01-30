@@ -72,6 +72,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 	</div><!-- #wrapper-navbar end -->
 
-    <?php if ( is_front_page() && is_home() ) : ?>
-	<?php get_template_part( 'global-templates/custom-header' ); ?>
-    <?php endif; ?>
+    <?php if ( is_front_page() ) : ?>
+		<?php get_template_part( 'global-templates/custom-header' ); ?>
+	<?php else: ?>
+		<?php get_template_part( 'global-templates/page-header' ); ?>
+	<?php endif; ?>

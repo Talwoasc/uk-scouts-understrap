@@ -89,6 +89,11 @@
     @include bg-alpha-variant(".bg-alpha-#{$alpha}", $black, $alpha / 1000);
   }
 
+// Set the max height on the non-home page header images
+#page-header-image {
+    max-height: 250px;
+}
+
 // Make the footer stick to the bottom for pages with short content
 #page {
     display: flex;

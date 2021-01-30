@@ -132,7 +132,7 @@ $volunteer = array(
                                         <div class="w-50">
                                             <span class="h4"><?php _e( 'Volunteer' , 'uk-scouts-understrap'); ?></span>
                                         </div>
-                                    <?php if ( $section['link'] ): ?>
+                                    <?php if ( $volunteer['link'] ): ?>
                                         </a>
                                     <?php else: ?>
                                         </div>

@@ -19,8 +19,8 @@ defined( 'ABSPATH' ) || exit;
 class Page_Attributes_Uk_Scouts_Theme {
 
     protected static $defaults = array(
-        'uk_scouts_header_background_color' => 'navy',
-        'uk_scouts_header_text_color' => 'light',
+        'uk_scouts_header_background_color' => 'light',
+        'uk_scouts_header_text_color' => 'dark',
     );
 
     protected static $friendly_names = array(
@@ -74,8 +74,8 @@ class Page_Attributes_Uk_Scouts_Theme {
     function __construct() {
         // Define this in the constructor since only statically initialized values can be declared outside
         $this->allowed_values = array(
-            'uk_scouts_header_background_color' => array( self::getDefault('uk_scouts_header_background_color') ) + $this->colors ,
-            'uk_scouts_header_text_color' => array( self::getDefault('uk_scouts_header_text_color') ) + $this->colors ,
+            'uk_scouts_header_background_color' => $this->colors ,
+            'uk_scouts_header_text_color' => $this->colors ,
         );
 
         // Hook in all the right places.

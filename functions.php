@@ -14,6 +14,7 @@ $uk_scouts_understrap_includes = array(
     '/custom-header.php',                   // Header customisation.
     '/page-attributes.php',                 // Additional attributes for pages.
     '/widgets.php',                         // Widget declarations and extensions.
+    '/gutenberg.php',                       // Customizations for the Gutenberg Editor.
 );
 
 foreach ( $uk_scouts_understrap_includes as $file ) {

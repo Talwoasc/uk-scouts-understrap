@@ -21,6 +21,43 @@
     }
   }
 
+// Add styles for the Gutenberg color picker
+@each $color, $value in $theme-colors {
+    @include bg-variant(".has-#{$color}-background-color", $value);
+}
+
+@each $color, $value in $theme-colors {
+    @include text-emphasis-variant(".has-#{$color}-color", $value);
+}
+
+// Override some default Gutenberg block styles
+.wp-block-button__link
+{
+    border-radius: 0;
+}
+.wp-block-button__link {
+    @extend .btn;
+    @include button-variant($primary, $primary);
+}
+.is-style-outline>.wp-block-button__link {
+    @extend .btn;
+    @include button-variant($primary, $primary);
+}
+@each $color, $value in $theme-colors {
+    .wp-block-button__link.has-#{$color}-color {
+        @extend .btn;
+        @include button-variant($value, $value);
+    }
+  }
+@each $color, $value in $theme-colors {
+    .is-style-outline>.wp-block-button__link.has-#{$color}-color {
+        @extend .btn;
+        @include button-outline-variant($value);
+        @include hover {
+            color: color-yiq($value) !important;
+          }
+    }
+  }
 
 /**
  * Theme Styles
@@ -91,7 +128,8 @@
 
 // Set the max height on the non-home page header images
 #page-header-image {
-    max-height: 250px;
+    min-height: 250px;
+    max-height: 30vh;
 }
 
 // Make the footer stick to the bottom for pages with short content
